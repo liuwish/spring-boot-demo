@@ -1,8 +1,4 @@
 spring:
-
-    server :  
-      port : 8080  
-
     datasource: #数据库访问配置
         name: test
         url: jdbc:mysql:///crm?useUnicode=true&characterEncoding=UTF-8
@@ -39,6 +35,15 @@ spring:
           max-active: 1000
           max-wait: -1
           
-    #日志相关            
-    logging: 
-        file: /opt/logs/log.log
+        
+#服务器相关配置       
+server:
+  port: 8080
+  context-path: /jartisan
+  #tomcat相关配置
+  tomcat:
+    max-connections:  1000
+    accesslog:
+      enabled: true
+      directory: /opt/logs
+      
