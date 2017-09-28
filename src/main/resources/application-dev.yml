@@ -1,0 +1,45 @@
+spring:
+
+    server :  
+      port : 8080
+        
+    datasource: #数据库访问配置
+        name: test
+        url: jdbc:mysql:///crm?useUnicode=true&characterEncoding=UTF-8
+        username: root
+        password: killer3
+        
+        # 使用druid数据源
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        filters: stat
+        maxActive: 20
+        initialSize: 1
+        maxWait: 60000
+        minIdle: 1
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: select 'x'
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        maxOpenPreparedStatements: 20
+        
+        
+    #redis 配置            
+    redis:
+        host: localhost
+        password:
+        timeout: 3000
+        database: 0
+        port: 6379
+        pool:
+          max-idle: 100
+          min-idle: 1
+          max-active: 1000
+          max-wait: -1
+          
+    #日志相关            
+    logging: 
+        file: /opt/logs/log.log

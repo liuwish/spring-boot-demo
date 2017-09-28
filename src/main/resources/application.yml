@@ -1,0 +1,31 @@
+spring:
+    # 激活配置文件
+    profiles:
+      active: dev
+    
+    main:
+        banner-mode: "console"
+        output:
+            ansi:
+            enabled: DETECT
+            
+#mybatis相关配置       
+mybatis: 
+  mapperLocations: classpath*:com/github/jartisan/springbootdemo/dao/**/mapping/*Mapper*.xml
+  typeAliasesPackage: com.github.jartisan.springbootdemo.dao.entity
+  config-location: classpath:SqlMapConfig.xml
+  
+mapper:
+    mappers:
+        - com.github.jartisan.springbootdemo.dao
+    not-empty: false
+    identity: MYSQL
+  
+  
+#pagehelper分页插件配置
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+  

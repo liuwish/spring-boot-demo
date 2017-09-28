@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.jartisan.springbootdemo.dao.general.mapper.TermMapperCustom">
+
+ <resultMap id="BaseResultCustomMap" type="com.github.jartisan.springbootdemo.dao.general.entity.Term">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="code" jdbcType="INTEGER" property="code" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="seq" jdbcType="INTEGER" property="seq" />
+    <result column="create_user_name" jdbcType="VARCHAR" property="createUserName" />
+    <result column="is_delete" jdbcType="INTEGER" property="isDelete" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+    id, code, name, seq, create_user_name, is_delete, create_date
+  </sql>
+  
+   <select id="selectByDeleted" parameterType="INTEGER" resultMap="BaseResultCustomMap">
+    select 
+    <include refid="Base_Column_List" />
+    from crm_term  where is_delete = #{isDelete,jdbcType=INTEGER} order by seq ASC
+  </select>
+  
+  
+  <select id="selectByCondition"  resultMap="BaseResultCustomMap">
+   select  <include refid="Base_Column_List" /> from crm_term  
+   <where> 
+    <if test="query.name != null and query.name != ''">
+         AND name = #{query.name}
+    </if> 
+    <if test="query.isDelete != null and query.isDelete != ''">
+         AND is_delete = #{query.isDelete}
+    </if> 
+   </where>
+   
+    <if test="query.orderBy != null and query.orderBy.size > 0">
+        <foreach collection="query.orderBy.keys" open="order by " item="key"  separator=",">  
+             <if test="null != query.orderBy[key]">    
+		       <![CDATA[${key} ${query.orderBy[key]}]]>     
+		    </if>  
+        </foreach>  
+    </if> 
+  </select>
+  
+  
+   <select id="selectByCode" parameterType="INTEGER" resultMap="BaseResultCustomMap">
+    select <include refid="Base_Column_List" />  from crm_term  where code = #{code,jdbcType=INTEGER} 
+  </select>
+</mapper>
