@@ -1,4 +1,4 @@
-package com.github.jartisan.springbootdemo;
+package com.github.jartisan.springbootdemo.configuration;
 
 import java.util.HashMap;
 import java.util.HashSet;
