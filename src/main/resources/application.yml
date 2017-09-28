@@ -1,4 +1,7 @@
 spring:
+    application:
+      index: 0
+    name: spring boot demo
     # 激活配置文件
     profiles:
       active: dev
@@ -28,4 +31,5 @@ pagehelper:
   reasonable: true
   supportMethodsArguments: true
   params: count=countSql
+  
   

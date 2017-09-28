@@ -1,4 +1,4 @@
-package com.github.jartisan.springbootdemo.core.general;
+package com.github.jartisan.springbootdemo.service.general;
 
 import java.util.List;
 

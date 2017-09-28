@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.StopWatch;
 
 import com.github.jartisan.springbootdemo.dao.general.entity.Term;
+import com.github.jartisan.springbootdemo.service.general.GeneralService;
 
 /***
  * 
