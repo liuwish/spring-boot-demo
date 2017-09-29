@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.github.jartisan.parent.base.exception.BaseException;
-import com.github.jartisan.springbootdemo.dao.conf.ReadOnlyConnection;
 import com.github.jartisan.springbootdemo.dao.general.entity.Term;
 import com.github.jartisan.springbootdemo.dao.general.mapper.TermMapperCustom;
 import com.github.jartisan.springbootdemo.dao.general.qo.TermQuery;
@@ -43,7 +42,6 @@ public class GeneralServiceImpl implements GeneralService {
 
 	@Override
 	//@Cacheable(value="general", key="'term.code['+#code+']'") 
-	@ReadOnlyConnection 
 	public Term selectTermByCode(Integer code) throws BaseException {
 		return termMapperCustom.selectByCode(code);
 	}
