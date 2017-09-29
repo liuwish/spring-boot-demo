@@ -27,7 +27,7 @@ server:
       directory: /opt/logs
       
       
-      #数据库访问配置
+#数据库访问配置
 # 使用druid数据源
 druid:
     type: com.alibaba.druid.pool.DruidDataSource
