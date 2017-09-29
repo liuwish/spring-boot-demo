@@ -7,11 +7,11 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.github.jartisan.springbootdemo.dao.datasource.ReadOnlyConnection;
+import com.github.jartisan.parent.base.exception.BaseException;
+import com.github.jartisan.springbootdemo.dao.dbconf.ReadOnlyConnection;
 import com.github.jartisan.springbootdemo.dao.general.entity.Term;
 import com.github.jartisan.springbootdemo.dao.general.mapper.TermMapperCustom;
 import com.github.jartisan.springbootdemo.dao.general.qo.TermQuery;
-import com.github.jartisan.springbootdemo.exception.BaseException;
 import com.github.jartisan.springbootdemo.service.general.GeneralService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;

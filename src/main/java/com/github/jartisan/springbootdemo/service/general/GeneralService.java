@@ -2,9 +2,9 @@ package com.github.jartisan.springbootdemo.service.general;
 
 import java.util.List;
 
+import com.github.jartisan.parent.base.exception.BaseException;
 import com.github.jartisan.springbootdemo.dao.general.entity.Term;
 import com.github.jartisan.springbootdemo.dao.general.qo.TermQuery;
-import com.github.jartisan.springbootdemo.exception.BaseException;
 import com.github.pagehelper.PageInfo;
 
 /***
