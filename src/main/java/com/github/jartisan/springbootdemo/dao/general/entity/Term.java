@@ -3,7 +3,7 @@ package com.github.jartisan.springbootdemo.dao.general.entity;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import com.github.jartisan.springbootdemo.dao.AbstractPersistable;
+import com.github.jartisan.parent.base.entity.AbstractPersistable;
 
 
 /***

@@ -3,7 +3,7 @@ package com.github.jartisan.springbootdemo.dao.general.qo;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import com.github.jartisan.springbootdemo.dao.Page;
+import com.github.jartisan.parent.base.entity.Page;
 
 
 /***
