@@ -22,8 +22,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 
-import com.github.jartisan.springbootdemo.dao.dbconf.DbContextHolder;
-import com.github.jartisan.springbootdemo.dao.dbconf.DbRouteDataSource;
+import com.github.jartisan.springbootdemo.dao.conf.DbContextHolder;
+import com.github.jartisan.springbootdemo.dao.conf.DbRouteDataSource;
 
 @Configuration
 @AutoConfigureAfter({DataSourceConfiguration.class})

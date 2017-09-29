@@ -1,4 +1,4 @@
-package com.github.jartisan.springbootdemo.dao.dbconf;
+package com.github.jartisan.springbootdemo.dao.conf;
 
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 

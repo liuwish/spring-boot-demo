@@ -1,4 +1,4 @@
-package com.github.jartisan.springbootdemo.dao.dbconf;
+package com.github.jartisan.springbootdemo.dao.conf;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

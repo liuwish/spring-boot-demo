@@ -1,4 +1,4 @@
-package com.github.jartisan.springbootdemo.dao.dbconf;
+package com.github.jartisan.springbootdemo.dao.conf;
 
 public class DbContextHolder {
 	public enum DbType{

@@ -1,4 +1,4 @@
-package com.github.jartisan.springbootdemo.dao.dbconf;
+package com.github.jartisan.springbootdemo.dao.conf;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
