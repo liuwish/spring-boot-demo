@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.github.jartisan.parent.base.exception.BaseException;
 import com.github.jartisan.parent.base.response.APIResult;
-import com.github.jartisan.springbootdemo.configuration.ReadOnlyConnection;
+import com.github.jartisan.springbootdemo.configuration.SlaveDataSource;
 import com.github.jartisan.springbootdemo.dao.general.entity.Term;
 import com.github.jartisan.springbootdemo.dao.general.qo.TermQuery;
 import com.github.jartisan.springbootdemo.service.general.GeneralService;
@@ -42,7 +42,7 @@ public class TermController {
 	 * @throws BaseException
 	 */
 	@RequestMapping(value="/v1/terms",method = RequestMethod.GET)
-	@ReadOnlyConnection
+	@SlaveDataSource
 	public APIResult terms() throws BaseException {
 		List<Term> terms = generalService.selectTermByUsable();
 		return new APIResult().success(terms);
@@ -55,7 +55,7 @@ public class TermController {
 	 * @throws BaseException
 	 */
 	@RequestMapping(value="/v1/page/terms",method = RequestMethod.GET)
-	@ReadOnlyConnection
+	@SlaveDataSource
 	public APIResult termsByPage(@Valid TermQuery termQuery) throws BaseException {
 		PageInfo<Term> terms = generalService.selectTermByUsableByPage(termQuery);
 		return new APIResult().success(terms);
@@ -68,7 +68,7 @@ public class TermController {
 	 * @throws BaseException
 	 */
 	@RequestMapping(value="/v1/page/query",method = RequestMethod.POST)
-	@ReadOnlyConnection
+	@SlaveDataSource
 	public APIResult termsByQuery(@RequestBody @Valid TermQuery termQuery) throws BaseException {
 		PageInfo<Term> terms = generalService.selectTermByUsableByPage(termQuery);
 		return new APIResult().success(terms);

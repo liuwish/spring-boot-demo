@@ -10,12 +10,12 @@ import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
-public class ReadOnlyConnectionInterceptor implements Ordered {
+public class SlaveDataSourceInterceptor implements Ordered {
 
-    public static final Logger logger = LoggerFactory.getLogger(ReadOnlyConnectionInterceptor.class);
+    public static final Logger logger = LoggerFactory.getLogger(SlaveDataSourceInterceptor.class);
 
     @Around("@annotation(readOnlyConnection)")
-    public Object proceed(ProceedingJoinPoint proceedingJoinPoint,ReadOnlyConnection readOnlyConnection) throws Throwable {
+    public Object proceed(ProceedingJoinPoint proceedingJoinPoint,SlaveDataSource readOnlyConnection) throws Throwable {
         try {
             logger.debug("set database connection to read only");
             DbContextHolder.setDbType(DbContextHolder.DbType.SLAVE);
