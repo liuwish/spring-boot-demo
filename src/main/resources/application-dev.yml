@@ -19,14 +19,19 @@ server:
   connection-timeout: 30000
   #tomcat相关配置
   tomcat:
-    max-connections:  3000
+    basedir: /opt
+    max-connections: 3000
     max-threads: 3000
     
     accesslog:
       enabled: true
-      directory: /opt/logs
+      directory: /logs
       
-      
+logging:
+  config: classpath:log4j2.yml
+   
+    
+  
 #数据库访问配置
 # 使用druid数据源
 druid:
