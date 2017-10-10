@@ -24,6 +24,7 @@ server:
     max-threads: 3000
     
     accesslog:
+      pattern: "%t %a %r %s (%D ms)"
       enabled: true
       directory: /logs
       
