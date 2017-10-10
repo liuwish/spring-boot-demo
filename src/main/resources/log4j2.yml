@@ -24,10 +24,10 @@ Configuration:
       PatternLayout:  
         pattern: "%d{yyyy-MM-dd HH:mm:ss,SSS}:%clr{%5p} %t (%F:%L) - %m%n"  
     RollingFile: # 输出到文件，超过50MB归档  
-      - name: ROLLING_FILE  
+      - name: ROLLING_FILE_ALL  
         ignoreExceptions: false  
-        fileName: ${log.path}/${project.name}.log  
-        filePattern: "${log.path}/$${date:yyyy-MM}/${project.name}-%d{yyyy-MM-dd}-%i.log.gz"  
+        fileName: ${log.path}/${project.name}-all.log  
+        filePattern: "${log.path}/$${date:yyyy-MM}/${project.name}-%d{yyyy-MM-dd}-%i-all.log.gz"  
         PatternLayout:  
           pattern: "%d{yyyy-MM-dd HH:mm:ss,SSS}:%clr{%5p} %t (%F:%L) - %m%n"  
         Policies:  
@@ -35,17 +35,36 @@ Configuration:
             size: "50 MB"  
         DefaultRolloverStrategy:  
           max: 1000  
+          
+      - name: ROLLING_FILE_ERROR  
+        ignoreExceptions: false  
+        fileName: ${log.path}/${project.name}-error.log  
+        filePattern: "${log.path}/$${date:yyyy-MM}/${project.name}-%d{yyyy-MM-dd}-%i-error.log.gz"  
+        PatternLayout:  
+          pattern: "%d{yyyy-MM-dd HH:mm:ss,SSS}:%clr{%5p} %t (%F:%L) - %m%n"  
+        Policies:  
+          SizeBasedTriggeringPolicy:  
+            size: "50 MB"  
+        DefaultRolloverStrategy:  
+          max: 1000
+        Filters:
+          ThresholdFilter:
+           level: error
+           onMatch: ACCEPT
+           onMismatch: DENY  
   
   Loggers:  
     Root:  
       level: info  
       AppenderRef:  
         - ref: CONSOLE  
-        - ref: ROLLING_FILE  
+        - ref: ROLLING_FILE_ALL  
+        - ref: ROLLING_FILE_ERROR  
     Logger: # 为com.github.jartisan.springbootdemo.dao包配置特殊的Log级别，方便调试  
       - name: com.github.jartisan.springbootdemo.dao
         additivity: false  
         level: ${sys:log.level.github}  
         AppenderRef:  
           - ref: CONSOLE  
-          - ref: ROLLING_FILE  
+          - ref: ROLLING_FILE_ALL  
+          - ref: ROLLING_FILE_ERROR  

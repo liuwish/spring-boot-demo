@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.github.jartisan.parent.base.exception.BaseException;
+import com.github.jartisan.springbootdemo.configuration.SlaveDataSource;
 import com.github.jartisan.springbootdemo.dao.general.entity.Term;
 import com.github.jartisan.springbootdemo.dao.general.mapper.TermMapperCustom;
 import com.github.jartisan.springbootdemo.dao.general.qo.TermQuery;

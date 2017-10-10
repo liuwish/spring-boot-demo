@@ -14,16 +14,16 @@ public class SlaveDataSourceInterceptor implements Ordered {
 
     public static final Logger logger = LoggerFactory.getLogger(SlaveDataSourceInterceptor.class);
 
-    @Around("@annotation(readOnlyConnection)")
-    public Object proceed(ProceedingJoinPoint proceedingJoinPoint,SlaveDataSource readOnlyConnection) throws Throwable {
+    @Around("@annotation(slaveDataSource)")
+    public Object proceed(ProceedingJoinPoint proceedingJoinPoint,SlaveDataSource slaveDataSource) throws Throwable {
         try {
-            logger.debug("set database connection to read only");
+            logger.info("set database connection to read only");
             DbContextHolder.setDbType(DbContextHolder.DbType.SLAVE);
             Object result = proceedingJoinPoint.proceed();
             return result;
         }finally {
             DbContextHolder.clearDbType();
-            logger.debug("restore database connection");
+            logger.info("restore database connection");
         }
     }
 
