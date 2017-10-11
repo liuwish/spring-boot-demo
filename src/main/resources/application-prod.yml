@@ -71,5 +71,3 @@ druid:
         testOnReturn: false
         poolPreparedStatements: true
         maxOpenPreparedStatements: 20
-      
-      
