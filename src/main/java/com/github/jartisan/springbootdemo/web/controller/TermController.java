@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.github.jartisan.parent.base.annotation.Security;
 import com.github.jartisan.parent.base.exception.BaseException;
 import com.github.jartisan.parent.base.response.APIResult;
 import com.github.jartisan.springbootdemo.configuration.SlaveDataSource;
@@ -31,7 +32,6 @@ import com.github.pagehelper.PageInfo;
 @RequestMapping("/general/term")
 public class TermController {
 	private static final Logger logger = LogManager.getLogger(TermController.class);
-	
 	
 	@Autowired
 	private GeneralService generalService;
@@ -55,7 +55,7 @@ public class TermController {
 	 * @throws BaseException
 	 */
 	@RequestMapping(value="/v1/page/terms",method = RequestMethod.GET)
-	@SlaveDataSource
+	@SlaveDataSource @Security
 	public APIResult termsByPage(@Valid TermQuery termQuery) throws BaseException {
 		PageInfo<Term> terms = generalService.selectTermByUsableByPage(termQuery);
 		return new APIResult().success(terms);

@@ -30,7 +30,10 @@ server:
       
 logging:
   config: classpath:log4j2.yml
-   
+#监控  
+management:
+  security:
+    enabled: false
     
   
 #数据库访问配置
