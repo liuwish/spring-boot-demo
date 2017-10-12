@@ -73,5 +73,7 @@ druid:
         maxOpenPreparedStatements: 20
       
       
-      
+ #第三方系统地址
+domain:
+  name: test.mbs.api     
       

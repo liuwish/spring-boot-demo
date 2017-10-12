@@ -2,7 +2,7 @@ spring:
    #redis 配置            
     redis:
         host: localhost
-        password: abc@1234
+        password: 
         timeout: 3000
         database: 0
         port: 6379
@@ -71,3 +71,8 @@ druid:
         testOnReturn: false
         poolPreparedStatements: true
         maxOpenPreparedStatements: 20
+
+        
+#第三方系统地址
+domain:
+  name: prod.mbs.api

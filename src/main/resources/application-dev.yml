@@ -28,8 +28,6 @@ server:
       enabled: true
       directory: /logs
       
-logging:
-  config: classpath:log4j2.yml
 #监控  
 management:
   security:
@@ -80,3 +78,6 @@ druid:
         poolPreparedStatements: true
         maxOpenPreparedStatements: 20
       
+#第三方系统地址
+domain:
+  name: dev.mbs.api

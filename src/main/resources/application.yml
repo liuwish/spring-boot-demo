@@ -4,7 +4,7 @@ spring:
     name: spring boot demo
     # 激活配置文件
     profiles:
-      active: dev
+      active: prod
     
     main:
         banner-mode: "console"
@@ -32,3 +32,6 @@ pagehelper:
   supportMethodsArguments: true
   params: count=countSql
   
+####第三方系统接口地址
+mbs: 
+ login: http://${domain.name}/mbs/login

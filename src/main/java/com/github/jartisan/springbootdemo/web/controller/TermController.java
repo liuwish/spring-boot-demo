@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -35,6 +36,8 @@ public class TermController {
 	
 	@Autowired
 	private GeneralService generalService;
+	@Value("${mbs.login}")
+	private String mbsurl;
 	
 	/***
 	 * 查询可用的学期数据
@@ -45,6 +48,7 @@ public class TermController {
 	@SlaveDataSource
 	public APIResult terms() throws BaseException {
 		List<Term> terms = generalService.selectTermByUsable();
+		logger.info("mbsurl:{}",mbsurl);
 		return new APIResult().success(terms);
 	}
 	
