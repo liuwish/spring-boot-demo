@@ -5,7 +5,12 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import com.github.jartisan.springbootdemo.web.interceptor.SecurityInterceptor;
-
+/**
+ * @ClassName: spring mvc interceptors
+ * @Description:spring mvc interceptors
+ * @author: wjl
+ * @date: 2016年2月26日 上午11:39:24
+ */
 @Configuration
 public class MyWebAppConfigurer extends WebMvcConfigurerAdapter{
 	 @Override

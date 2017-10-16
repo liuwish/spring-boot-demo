@@ -7,7 +7,7 @@ Configuration:
       - name: log.level.console  
         value: trace  
       - name: log.level.github  
-        value: trace         
+        value: info         
       - name: log.path  
         value: /opt/logs  
       - name: project.name  

@@ -1,5 +1,9 @@
 package com.github.jartisan.springbootdemo.cache;
-
+/***
+ * 
+ * @author wjl
+ * @date: 2016年2月26日 上午11:39:24
+ */
 public class User implements java.io.Serializable{
 	private static final long serialVersionUID = 1L;
 	private String name;

@@ -24,6 +24,7 @@ import com.github.jartisan.springbootdemo.service.authorization.TokenManager;
 public class SecurityInterceptor extends HandlerInterceptorAdapter {
 	
 	protected final Logger log = LogManager.getLogger(getClass());
+	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		if (handler instanceof HandlerMethod){

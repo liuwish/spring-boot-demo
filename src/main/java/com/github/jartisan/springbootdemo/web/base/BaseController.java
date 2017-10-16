@@ -16,7 +16,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.github.jartisan.parent.base.enums.GlobalCode;
 import com.github.jartisan.parent.base.exception.BaseException;
-import com.github.jartisan.parent.base.response.APIResult;
+import com.github.jartisan.parent.base.response.RestResult;
+/***
+ * @author wjl
+ * @date: 2016年2月26日 上午11:39:24
+ */
 @ControllerAdvice
 public class BaseController {
 	private static final Logger log = LogManager.getLogger(BaseController.class);
@@ -24,8 +28,8 @@ public class BaseController {
 
 	@ExceptionHandler(BaseException.class)
 	@ResponseStatus(HttpStatus.OK)
-	public @ResponseBody APIResult baseExceptionHandler(BaseException ex) {
-		APIResult result = new APIResult();
+	public @ResponseBody RestResult baseExceptionHandler(BaseException ex) {
+		RestResult result = new RestResult();
 		result.setCode(ex.getErrCode());
 		result.setMessage(ex.getErrMsg());
 		log.error("发生系统错误:{}:{}", ex.getErrCode(),ex.getErrMsg(),ex);
@@ -34,8 +38,8 @@ public class BaseController {
 	
 	@ExceptionHandler(Exception.class)
 	@ResponseStatus(HttpStatus.OK)
-	public @ResponseBody APIResult handleAllException(Exception ex) {
-		APIResult result = new APIResult();
+	public @ResponseBody RestResult handleAllException(Exception ex) {
+		RestResult result = new RestResult();
 		result.setCode(GlobalCode.ERROR.getCode());
 		result.setMessage(GlobalCode.ERROR.getMsg());
 		result.setData(ex.getMessage());
@@ -45,23 +49,23 @@ public class BaseController {
 	
 	@ExceptionHandler(BindException.class)  
 	@ResponseStatus(HttpStatus.OK)  
-    public @ResponseBody APIResult handleValidationException(BindException e) {  
+    public @ResponseBody RestResult handleValidationException(BindException e) {  
    	log.warn("参数验证失败", e.getMessage());  
    	Set<String> errorCodes = new HashSet<>();
 		for (ObjectError error :  e.getAllErrors()) {
 			errorCodes.add(error.getDefaultMessage());
 		}
-       return new APIResult().failure(GlobalCode.ERROR_190002.getCode(), errorCodes.toString());  
+       return new RestResult().failure(GlobalCode.ERROR_190002.getCode(), errorCodes.toString());  
     } 
 	
 	 @ExceptionHandler(MethodArgumentNotValidException.class)  
 	 @ResponseStatus(HttpStatus.OK)  
-     public @ResponseBody APIResult handleValidationException(MethodArgumentNotValidException e) {  
+     public @ResponseBody RestResult handleValidationException(MethodArgumentNotValidException e) {  
 		log.warn("参数验证失败", e.getMessage());  
     	Set<String> errorCodes = new HashSet<>();
     	for (ObjectError error :  e.getBindingResult().getAllErrors()) {
 			errorCodes.add(error.getDefaultMessage());
 		}
-        return new APIResult().failure(GlobalCode.ERROR_190002.getCode(), errorCodes.toString());  
+        return new RestResult().failure(GlobalCode.ERROR_190002.getCode(), errorCodes.toString());  
      }  
 }

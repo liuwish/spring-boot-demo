@@ -12,7 +12,10 @@ import org.slf4j.LoggerFactory;
 import com.github.jartisan.parent.base.utils.ZipFileUtil;
 import com.google.common.base.Charsets;
 import com.google.common.io.Files;
-
+/***
+ * @author wjl
+ * @date: 2016年2月26日 上午11:39:24
+ */
 public class FileTest {
 	private static Logger log = LoggerFactory.getLogger(FileTest.class);
 	String fileName = "e:" + File.separator + "test"+ File.separator+ DateFormatUtils.format(new Date(), "yyyyMMdd");
@@ -21,7 +24,9 @@ public class FileTest {
 
 	@Test
 	public void fileWrite() throws IOException {
-		for(int i=0;i<10;i++){
+		final int testCount = 10;
+		final int testAppendCount = 3;
+		for(int i=0;i<testCount;i++){
 			log.info("开始生成第 {} 文件",i);
 			File dest = new File(fileName+ i + ".txt");
 			if (!dest.exists()) {
@@ -30,7 +35,7 @@ public class FileTest {
 				dest.createNewFile();
 				log.info("创建完成");
 			}
-			for (int j = 0; j < 3; j++) {
+			for (int j = 0; j < testAppendCount; j++) {
 				log.info("开始追加第 {} 文件内容",j);
 				String hamletQuoteStart = "13785641151" + "\r\n";
 				Files.append(hamletQuoteStart, dest, Charsets.UTF_8);

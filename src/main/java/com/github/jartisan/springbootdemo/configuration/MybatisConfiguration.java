@@ -21,7 +21,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
-
+/**
+ * @ClassName: MybatisConfiguration
+ * @Description:MybatisConfiguration
+ * @author: wjl
+ * @date: 2016年2月26日 上午11:39:24
+ */
 @Configuration
 @AutoConfigureAfter({DataSourceConfiguration.class})
 public class MybatisConfiguration extends MybatisAutoConfiguration {

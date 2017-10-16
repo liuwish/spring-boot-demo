@@ -9,7 +9,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-
+/**
+ * @ClassName: DataSourceConfiguration
+ * @Description:数据源配置
+ * @author: wjl
+ * @date: 2016年2月26日 上午11:39:24
+ */
 @Configuration
 @EnableTransactionManagement
 public class DataSourceConfiguration {

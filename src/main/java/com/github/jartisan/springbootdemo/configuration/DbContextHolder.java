@@ -1,23 +1,38 @@
 package com.github.jartisan.springbootdemo.configuration;
-
+/**
+ * @ClassName: RouteHolder
+ * @Description:保存当前线程数据源的key
+ * @author: wjl
+ * @date: 2016年2月26日 上午11:39:24
+ */
 public class DbContextHolder {
 	public enum DbType{
-        MASTER,SLAVE
+		/***
+		 * 主数据源
+		 */
+        MASTER,
+        /***
+         * 从数据源
+         */
+        SLAVE
     }
 
-    private static final ThreadLocal<DbType> contextHolder = new ThreadLocal<>();
+    private static final ThreadLocal<DbType> CONTEXT_HOLDER = new ThreadLocal<>();
 
     public static void setDbType(DbType dbType){
-        if(dbType==null)throw new NullPointerException();
-        contextHolder.set(dbType);
+        if(dbType==null){
+        	throw new NullPointerException();
+        }else{
+        	CONTEXT_HOLDER.set(dbType);	
+        }
     }
 
     public static DbType getDbType(){
-        return contextHolder.get()==null?DbType.MASTER:contextHolder.get();
+        return CONTEXT_HOLDER.get()==null?DbType.MASTER:CONTEXT_HOLDER.get();
     }
 
     public static void clearDbType(){
-        contextHolder.remove();
+        CONTEXT_HOLDER.remove();
     }
 
 }

@@ -8,16 +8,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.github.jartisan.parent.base.exception.BaseException;
-import com.github.jartisan.springbootdemo.configuration.SlaveDataSource;
 import com.github.jartisan.springbootdemo.dao.general.entity.Term;
 import com.github.jartisan.springbootdemo.dao.general.mapper.TermMapperCustom;
 import com.github.jartisan.springbootdemo.dao.general.qo.TermQuery;
 import com.github.jartisan.springbootdemo.service.general.GeneralService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-
+/***
+ * 基础数据服务类
+ * @author wjl
+ */
 @Service
-@Transactional
+@Transactional(rollbackFor = Exception.class)
 public class GeneralServiceImpl implements GeneralService {
 	@Autowired
 	private TermMapperCustom termMapperCustom;
@@ -40,9 +42,10 @@ public class GeneralServiceImpl implements GeneralService {
 	}
 	 
 	
-
+	/***
+	 * @Cacheable(value="general", key="'term.code['+#code+']'") 
+	 */
 	@Override
-	//@Cacheable(value="general", key="'term.code['+#code+']'") 
 	public Term selectTermByCode(Integer code) throws BaseException {
 		return termMapperCustom.selectByCode(code);
 	}

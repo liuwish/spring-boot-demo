@@ -18,14 +18,21 @@ server:
   port: 8080
   context-path: /jartisan
   connection-timeout: 30000
-  #tomcat相关配置
-  tomcat:
-    max-connections:  3000
-    max-threads: 3000
+#tomcat相关配置
+  #tomcat:
+   # basedir: /opt
+    #max-connections: 3000 可选
+    #max-threads: 3000     可选
     
+    #accesslog:
+     #pattern: "%t %a %r %s (%D ms)"
+      #enabled: true
+      #directory: /logs
+  undertow:
     accesslog:
+      pattern: combined
       enabled: true
-      directory: /opt/logs
+      dir: /opt/logs
       
       
 #数据库访问配置
@@ -39,10 +46,10 @@ druid:
         
         driver-class-name: com.mysql.jdbc.Driver
         filters: stat
-        maxActive: 20
-        initialSize: 1
+        maxActive: 100
+        initialSize: 3
         maxWait: 60000
-        minIdle: 1
+        minIdle: 3
         timeBetweenEvictionRunsMillis: 60000
         minEvictableIdleTimeMillis: 300000
         validationQuery: select 'x'
@@ -59,10 +66,10 @@ druid:
         
         driver-class-name: com.mysql.jdbc.Driver
         filters: stat
-        maxActive: 20
-        initialSize: 1
+        maxActive: 100
+        initialSize: 3
         maxWait: 60000
-        minIdle: 1
+        minIdle: 3
         timeBetweenEvictionRunsMillis: 60000
         minEvictableIdleTimeMillis: 300000
         validationQuery: select 'x'

@@ -15,14 +15,19 @@ import com.github.jartisan.parent.base.enums.GlobalCode;
 import com.github.jartisan.parent.base.exception.BaseException;
 import com.github.jartisan.springbootdemo.model.authorization.TokenModel;
 import com.github.jartisan.springbootdemo.service.authorization.TokenManager;
-
+/***
+ * Redis Token 管理实现类
+ * @author wjl
+ */
 @Service
 public class RedisTokenManager implements TokenManager {
 
 	private static final Logger logger = LogManager.getLogger(RedisTokenManager.class);
 
-	//@Value("#{server['user.token.expires']}")
-	//#用户token过期时间 单位分钟
+	/***
+	 *@Value("#{server['user.token.expires']}")
+	 *#用户token过期时间 单位分钟 
+	 */
 	private int userTokenExpires=30;
 	
 
@@ -59,8 +64,9 @@ public class RedisTokenManager implements TokenManager {
 		if (authentication == null || authentication.length() == 0) {
 			return null;
 		}
+		final int len = 2;
 		String[] param = authentication.split("_");
-		if (param.length != 2) {
+		if (param.length != len) {
 			return null;
 		}
 		// 使用 userId 和源 token 简单拼接成的 token，可以增加加密措施

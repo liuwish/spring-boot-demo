@@ -7,7 +7,12 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-
+/**
+ * @ClassName: CorsConfig
+ * @Description:CORS跨域请示
+ * @author: wjl
+ * @date: 2016年2月26日 上午11:39:24
+ */
 @Configuration
 public class CorsConfig extends WebMvcConfigurerAdapter{
 	@Bean

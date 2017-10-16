@@ -9,6 +9,7 @@ import com.github.jartisan.parent.base.entity.Page;
 /***
  * 学期
  * @author wjl
+ * @date: 2016年2月26日 上午11:39:24
  */
 public class TermQuery extends Page implements java.io.Serializable {
 	/***

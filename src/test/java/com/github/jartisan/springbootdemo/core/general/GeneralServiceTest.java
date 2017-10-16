@@ -25,9 +25,10 @@ public class GeneralServiceTest {
 	
 	@Test
 	public void testSelectByDeleted() {
+		final int testCount=10000;
 		StopWatch stopWatch = new StopWatch();
 		stopWatch.start();
-		for(int i=0;i<10000;i++){
+		for(int i=0;i<testCount;i++){
 			termService.selectTermByUsable();
 		}
 		stopWatch.stop();

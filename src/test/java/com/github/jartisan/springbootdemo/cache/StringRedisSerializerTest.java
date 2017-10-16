@@ -18,7 +18,11 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.support.atomic.RedisAtomicLong;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.StopWatch;
-
+/***
+ * 
+ * @author wjl
+ * @date: 2016年2月26日 上午11:39:24
+ */
 @RunWith(SpringJUnit4ClassRunner.class)  
 @SpringBootTest
 public class StringRedisSerializerTest {
@@ -42,7 +46,8 @@ public class StringRedisSerializerTest {
 	public void addOrUpdateTest() {
 		StopWatch stopWatch = new StopWatch("redis test :");
 		stopWatch.start("opsForValue");
-		for (int i = 0; i < 10000; i++) {
+		final int testCount =10000;
+		for (int i = 0; i < testCount; i++) {
 			stringRedisTemplate.opsForValue().set("user.userid."+i, "张三" + i);
 		}
 		stopWatch.stop();
@@ -58,7 +63,8 @@ public class StringRedisSerializerTest {
 	public void delete() {
 		StopWatch stopWatch = new StopWatch("redis test :");
 		stopWatch.start("delete");
-		for (int i = 0; i < 10000; i++) {
+		final int testCount =10000;
+		for (int i = 0; i < testCount; i++) {
 			stringRedisTemplate.delete("user.userid."+i);	
 		}
 		stopWatch.stop();

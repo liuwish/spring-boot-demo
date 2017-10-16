@@ -21,7 +21,12 @@ import org.springframework.data.redis.support.atomic.RedisAtomicLong;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
+/**
+ * @ClassName: RedisConfig
+ * @Description:RedisConfig
+ * @author: wjl
+ * @date: 2016年2月26日 上午11:39:24
+ */
 @Configuration
 @EnableCaching
 public class RedisConfig  extends CachingConfigurerSupport{
@@ -51,7 +56,7 @@ public class RedisConfig  extends CachingConfigurerSupport{
 	        Set<String> cacheNames = new HashSet<>();
 	        cacheNames.add("general");
 	        cacheManager.setCacheNames(cacheNames);
-	        Map<String,Long> expires = new HashMap<>();
+	        Map<String,Long> expires = new HashMap<>(2);
 	        expires.put("general", 6000L);
 	        cacheManager.setExpires(expires);
 	        return cacheManager;

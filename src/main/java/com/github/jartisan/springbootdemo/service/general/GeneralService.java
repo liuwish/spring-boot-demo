@@ -15,12 +15,15 @@ public interface GeneralService {
 	/***
      * 查询可用学期数据
      * @return
+     * @throws BaseException
      */
     List<Term> selectTermByUsable() throws BaseException;
     
     /***
      * 分页查询可用学期数据
+     * @param termQuery 学期查询对象
      * @return
+     * @throws BaseException
      */
     PageInfo<Term> selectTermByUsableByPage(TermQuery termQuery) throws BaseException;
     

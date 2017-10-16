@@ -4,7 +4,7 @@ spring:
     name: spring boot demo
     # 激活配置文件
     profiles:
-      active: prod
+      active: dev
     
     main:
         banner-mode: "console"

@@ -7,6 +7,10 @@ import org.apache.ibatis.annotations.Param;
 
 import com.github.jartisan.springbootdemo.dao.general.entity.Term;
 import com.github.jartisan.springbootdemo.dao.general.qo.TermQuery;
+/**
+ * @author: wjl
+ * @date: 2016年2月26日 上午11:39:24
+ */
 @Mapper
 public interface TermMapperCustom {
 	 /***
@@ -17,8 +21,8 @@ public interface TermMapperCustom {
     List<Term> selectByDeleted(int deleted);
     
     /***
-     * 根据删除状态查询所有学期
-     * @param deleted
+     * 根据查询条件查询学期
+     * @param query
      * @return
      */
     List<Term> selectByCondition(@Param("query") TermQuery query);

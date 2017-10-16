@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.github.jartisan.parent.base.annotation.Security;
 import com.github.jartisan.parent.base.exception.BaseException;
-import com.github.jartisan.parent.base.response.APIResult;
+import com.github.jartisan.parent.base.response.RestResult;
 import com.github.jartisan.springbootdemo.configuration.SlaveDataSource;
 import com.github.jartisan.springbootdemo.dao.general.entity.Term;
 import com.github.jartisan.springbootdemo.dao.general.qo.TermQuery;
@@ -36,8 +36,6 @@ public class TermController {
 	
 	@Autowired
 	private GeneralService generalService;
-	@Value("${mbs.login}")
-	private String mbsurl;
 	
 	/***
 	 * 查询可用的学期数据
@@ -46,10 +44,9 @@ public class TermController {
 	 */
 	@RequestMapping(value="/v1/terms",method = RequestMethod.GET)
 	@SlaveDataSource
-	public APIResult terms() throws BaseException {
+	public RestResult terms() throws BaseException {
 		List<Term> terms = generalService.selectTermByUsable();
-		logger.info("mbsurl:{}",mbsurl);
-		return new APIResult().success(terms);
+		return new RestResult().success(terms);
 	}
 	
 	
@@ -60,9 +57,9 @@ public class TermController {
 	 */
 	@RequestMapping(value="/v1/page/terms",method = RequestMethod.GET)
 	@SlaveDataSource @Security
-	public APIResult termsByPage(@Valid TermQuery termQuery) throws BaseException {
+	public RestResult termsByPage(@Valid TermQuery termQuery) throws BaseException {
 		PageInfo<Term> terms = generalService.selectTermByUsableByPage(termQuery);
-		return new APIResult().success(terms);
+		return new RestResult().success(terms);
 	}
 	
 	
@@ -73,8 +70,8 @@ public class TermController {
 	 */
 	@RequestMapping(value="/v1/page/query",method = RequestMethod.POST)
 	@SlaveDataSource
-	public APIResult termsByQuery(@RequestBody @Valid TermQuery termQuery) throws BaseException {
+	public RestResult termsByQuery(@RequestBody @Valid TermQuery termQuery) throws BaseException {
 		PageInfo<Term> terms = generalService.selectTermByUsableByPage(termQuery);
-		return new APIResult().success(terms);
+		return new RestResult().success(terms);
 	}
 }
