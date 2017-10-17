@@ -7,7 +7,6 @@ import javax.validation.Valid;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -44,9 +43,9 @@ public class TermController {
 	 */
 	@RequestMapping(value="/v1/terms",method = RequestMethod.GET)
 	@SlaveDataSource
-	public RestResult terms() throws BaseException {
+	public RestResult<List<Term>> terms() throws BaseException {
 		List<Term> terms = generalService.selectTermByUsable();
-		return new RestResult().success(terms);
+		return RestResult.ok(terms);
 	}
 	
 	
@@ -57,9 +56,9 @@ public class TermController {
 	 */
 	@RequestMapping(value="/v1/page/terms",method = RequestMethod.GET)
 	@SlaveDataSource @Security
-	public RestResult termsByPage(@Valid TermQuery termQuery) throws BaseException {
+	public RestResult<PageInfo<Term>> termsByPage(@Valid TermQuery termQuery) throws BaseException {
 		PageInfo<Term> terms = generalService.selectTermByUsableByPage(termQuery);
-		return new RestResult().success(terms);
+		return RestResult.ok(terms);
 	}
 	
 	
@@ -70,8 +69,8 @@ public class TermController {
 	 */
 	@RequestMapping(value="/v1/page/query",method = RequestMethod.POST)
 	@SlaveDataSource
-	public RestResult termsByQuery(@RequestBody @Valid TermQuery termQuery) throws BaseException {
+	public RestResult<PageInfo<Term>> termsByQuery(@RequestBody @Valid TermQuery termQuery) throws BaseException {
 		PageInfo<Term> terms = generalService.selectTermByUsableByPage(termQuery);
-		return new RestResult().success(terms);
+		return RestResult.ok(terms);
 	}
 }

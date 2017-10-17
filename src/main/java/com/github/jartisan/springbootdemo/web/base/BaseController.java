@@ -28,44 +28,37 @@ public class BaseController {
 
 	@ExceptionHandler(BaseException.class)
 	@ResponseStatus(HttpStatus.OK)
-	public @ResponseBody RestResult baseExceptionHandler(BaseException ex) {
-		RestResult result = new RestResult();
-		result.setCode(ex.getErrCode());
-		result.setMessage(ex.getErrMsg());
+	public @ResponseBody RestResult<String> baseExceptionHandler(BaseException ex) {
 		log.error("发生系统错误:{}:{}", ex.getErrCode(),ex.getErrMsg(),ex);
-		return result;
+		return RestResult.failure(ex.getErrCode(), ex.getErrMsg());
 	}
 	
 	@ExceptionHandler(Exception.class)
 	@ResponseStatus(HttpStatus.OK)
-	public @ResponseBody RestResult handleAllException(Exception ex) {
-		RestResult result = new RestResult();
-		result.setCode(GlobalCode.ERROR.getCode());
-		result.setMessage(GlobalCode.ERROR.getMsg());
-		result.setData(ex.getMessage());
+	public @ResponseBody RestResult<String> handleAllException(Exception ex) {
 		log.error("发生系统错误:{}", ex.getMessage(),ex);
-		return result;
+		return RestResult.failure(GlobalCode.ERROR.getCode(), GlobalCode.ERROR.getMsg(),ex.getMessage());
 	}
 	
 	@ExceptionHandler(BindException.class)  
 	@ResponseStatus(HttpStatus.OK)  
-    public @ResponseBody RestResult handleValidationException(BindException e) {  
-   	log.warn("参数验证失败", e.getMessage());  
-   	Set<String> errorCodes = new HashSet<>();
+    public @ResponseBody RestResult<String> handleValidationException(BindException e) {  
+   	   log.warn("参数验证失败", e.getMessage());  
+   	   Set<String> errorCodes = new HashSet<>();
 		for (ObjectError error :  e.getAllErrors()) {
 			errorCodes.add(error.getDefaultMessage());
 		}
-       return new RestResult().failure(GlobalCode.ERROR_190002.getCode(), errorCodes.toString());  
+		return RestResult.failure(GlobalCode.ERROR_190002.getCode(), errorCodes.toString());
     } 
 	
 	 @ExceptionHandler(MethodArgumentNotValidException.class)  
 	 @ResponseStatus(HttpStatus.OK)  
-     public @ResponseBody RestResult handleValidationException(MethodArgumentNotValidException e) {  
+     public @ResponseBody RestResult<String> handleValidationException(MethodArgumentNotValidException e) {  
 		log.warn("参数验证失败", e.getMessage());  
     	Set<String> errorCodes = new HashSet<>();
     	for (ObjectError error :  e.getBindingResult().getAllErrors()) {
 			errorCodes.add(error.getDefaultMessage());
 		}
-        return new RestResult().failure(GlobalCode.ERROR_190002.getCode(), errorCodes.toString());  
+    	return RestResult.failure(GlobalCode.ERROR_190002.getCode(), errorCodes.toString());  
      }  
 }
