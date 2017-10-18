@@ -34,7 +34,23 @@ public class Term extends AbstractPersistable<Integer> implements java.io.Serial
     private Integer isDelete;
 
 
-    private static final long serialVersionUID = 1L;
+    public Term() {
+		super();
+	}
+    
+    
+
+	public Term(Integer code, String name, Integer seq, String createUserName, Integer isDelete) {
+		this.code = code;
+		this.name = name;
+		this.seq = seq;
+		this.createUserName = createUserName;
+		this.isDelete = isDelete;
+	}
+
+
+
+	private static final long serialVersionUID = 1L;
 
 
     public Integer getCode() {

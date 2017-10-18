@@ -38,7 +38,6 @@ management:
   security:
     enabled: false
     
-  
 #数据库访问配置
 # 使用druid数据源
 druid:
